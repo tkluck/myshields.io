@@ -67,6 +67,7 @@ var app = new Vue({
     }
   },
   created: function() {
+    onhashchange = this.updateAnchor
     if(!this.query) {
       this.query = "user:tkluck"
     } else {
@@ -75,6 +76,9 @@ var app = new Vue({
     }
   },
   methods: {
+    updateAnchor: function() {
+      this.anchor = window.location.hash.slice(1)
+    },
     updateRepos: function() {
       let vueapp = this
       axios.get(
