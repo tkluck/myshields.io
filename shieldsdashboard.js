@@ -1,9 +1,9 @@
 const shieldsRegexes = [
-  /https:\/\/travis-ci.org\/[^\s]*\.svg(?:\?[^\s]*)?/g,
+  /https:\/\/travis-ci.org\/[^\s]*?\.svg(?:\?[^\s]*?)?/g,
   /https:\/\/ci.appveyor.com\/api\/projects\/status\/\w+\?svg=true/g,
-  /https:\/\/coveralls.io\/[^\s]*\/badge.svg(?:\?[^\s]^)?/g,
-  /https:\/\/img.shields.io\/circleci\/project\/github\/[^\s]*\.svg/g,
-  /https:\/\/codecov.io\/gh\/[^\s]*\/badge\.svg/g
+  /https:\/\/coveralls.io\/[^\s]*?\/badge.svg(?:\?[^\s]^)?/g,
+  /https:\/\/img.shields.io\/circleci\/project\/github\/[^\s]*?\.svg/g,
+  /https:\/\/codecov.io\/gh\/[^\s]*?\/badge\.svg/g
 ]
 
 Vue.component('repo-row', {
