@@ -1,0 +1,24 @@
+<!doctype html>
+<html>
+  <head>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.11"></script>
+    <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/lodash@4.17.15"></script>
+    <title>Shields dashboard</title>
+  </head>
+  <body>
+    <h1>Shields overview</h1>
+    <div id="app">
+      <div v-if="errorstate">
+          {{errorstate}}
+      </div>
+      <input v-model.lazy="query" placeholder="(a github-style query)">
+      <table>
+        <tbody>
+          <repo-row v-for="repo in repositories" v-bind:key="repo.id" v-bind:repo="repo"></repo-row>
+        </tbody>
+      </table>
+    </div>
+  </body>
+  <script src="shieldsdashboard.js"></script>
+</html>
