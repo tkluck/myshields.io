@@ -28,9 +28,27 @@ Vue.component('repo-row', {
       })
   },
   computed: {
+    pkgname: function() {
+      if(this.repo.name.slice(-3) === ".jl") {
+        return this.repo.name.slice(0,-3)
+      } else {
+        return undefined
+      }
+    },
     shields: function() {
-      return _.filter(_.flatten(_.map(shieldsRegexes, re => this.readme.match(re))))
-    }
+      let defaultshields = [
+        `https://img.shields.io/github/stars/${this.repo.full_name}.svg`,
+      ]
+      if(this.pkgname) {
+        defaultshields.push(
+          `https://juliaci.github.io/NanosoldierReports/pkgeval_badges/${this.pkgname[0]}/${this.pkgname}.svg`
+        )
+      }
+      let capturedshields = _.filter(_.flatten(_.map(shieldsRegexes, re => this.readme.match(re))))
+      return _.concat(defaultshields, capturedshields)
+    },
+    defaultshields: function() {
+    },
   },
   template: `
     <a class="list-group-item list-group-item-action" v-if="!_.isEmpty(shields)" v-bind:href="repo.html_url">
@@ -39,6 +57,7 @@ Vue.component('repo-row', {
           <h5 class="mb-1">{{repo.name}}</h5>
         </div>
         <div class="col-9">
+          <img v-bind:src="this.starsbadge" />
           <img v-for="shield in shields" v-bind:src="shield" style="margin-left:0.5em; margin-right:0.5em"/>
         </div>
       </div>
