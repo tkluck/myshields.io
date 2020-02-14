@@ -85,7 +85,7 @@ var app = new Vue({
   created: function() {
     onhashchange = this.updateAnchor
     if(!this.query) {
-      this.query = "user:tkluck"
+      this.query = "user:tkluck archived:false"
     } else {
       // already a side-effect of the assignment in the other branch
       this.updateRepos()
