@@ -47,8 +47,6 @@ Vue.component('repo-row', {
       let capturedshields = _.filter(_.flatten(_.map(shieldsRegexes, re => this.readme.match(re))))
       return _.concat(defaultshields, capturedshields)
     },
-    defaultshields: function() {
-    },
   },
   template: `
     <a class="list-group-item list-group-item-action" v-if="!_.isEmpty(shields)" v-bind:href="repo.html_url">
@@ -57,7 +55,6 @@ Vue.component('repo-row', {
           <h5 class="mb-1">{{repo.name}}</h5>
         </div>
         <div class="col-9">
-          <img v-bind:src="this.starsbadge" />
           <img v-for="shield in shields" v-bind:src="shield" style="margin-left:0.5em; margin-right:0.5em"/>
         </div>
       </div>
