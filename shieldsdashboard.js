@@ -36,16 +36,24 @@ Vue.component('repo-row', {
       }
     },
     shields: function() {
-      let defaultshields = [
+      let shields = [
         `https://img.shields.io/github/stars/${this.repo.full_name}.svg`,
-      ]
+      ];
       if(this.pkgname) {
-        defaultshields.push(
+        shields.push(
           `https://juliaci.github.io/NanosoldierReports/pkgeval_badges/${this.pkgname[0]}/${this.pkgname}.svg`
-        )
+        );
       }
-      let capturedshields = _.filter(_.flatten(_.map(shieldsRegexes, re => this.readme.match(re))))
-      return _.concat(defaultshields, capturedshields)
+      let capturedshields = _.filter(_.flatten(_.map(shieldsRegexes, re => this.readme.match(re))));
+      shields = _.concat(shields, capturedshields);
+
+      if(this.repo.open_issues_count > 0) {
+        shields.push(
+          `https://img.shields.io/github/issues-raw/${this.repo.full_name}.svg`
+        );
+      }
+
+      return shields;
     },
   },
   template: `
