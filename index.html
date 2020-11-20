@@ -11,7 +11,10 @@
   <body>
     <div id="app" class="container">
       <div v-if="errorstate" class="alert alert-warning" role="alert">
-          {{errorstate}}
+        {{errorstate}}
+        <a href="javascript:app.updateRepos()" role="button" class="close">
+            <span>&#8635;</span>
+        </button>
       </div>
       <nav class="navbar navbar-light bg-light">
         <a class="navbar-brand">myshields.io</a>
