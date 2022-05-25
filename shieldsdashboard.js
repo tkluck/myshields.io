@@ -3,7 +3,8 @@ const shieldsRegexes = [
   /https:\/\/ci.appveyor.com\/api\/projects\/status\/\w+\?svg=true/g,
   /https:\/\/coveralls.io\/[^\s]*?\/badge.svg(?:\?[^\s]^)?/g,
   /https:\/\/img.shields.io\/circleci\/project\/github\/[^\s]*?\.svg/g,
-  /https:\/\/codecov.io\/gh\/[^\s]*?\/badge\.svg/g
+  /https:\/\/codecov.io\/gh\/[^\s]*?\/badge\.svg/g,
+  /https:\/\/github.com\/[^\s]*?\/workflows\/CI\/badge\.svg/g
 ]
 
 Vue.component('repo-row', {
